@@ -1,34 +1,57 @@
 function obtenerNombre() {
-    let nombre = localStorage.getItem('nombre');
-    do {
-        nombre = prompt("Ingrese su nombre");
-        if (nombre === "") {
-            alert("Debe ingresar un nombre.");
-        }
-    } while (nombre === "");
-    localStorage.setItem('nombre', nombre);
-    return nombre;
+    return localStorage.getItem('nombre');
 }
 
+function guardarNombre(nombre) {
+    if (nombre !== "") {
+        localStorage.setItem('nombre', nombre);
+        return true;
+    }
+    return false;
+}
+
+const formNombre = document.getElementById('formNombre');
+const nombreInput = document.getElementById('nombre');
+const errorNombre = document.getElementById('errorNombre');
+
+formNombre.addEventListener('submit', function(event) {
+    event.preventDefault();
+    const nombre = nombreInput.value;
+    if (guardarNombre(nombre)) {
+        formNombre.reset();
+    } else {
+        errorNombre.style.display = 'block'; 
+    }
+});
+
 const nombreUsuario = obtenerNombre();
+if (nombreUsuario) {
+    console.log("¡Bienvenido/a de nuevo, " + nombreUsuario + "!");
+}
 
 class Producto {
-    constructor(id, nombre, precio, cantidad) {
+    constructor(id, nombre, precio) {
         this.id = id;
         this.nombre = nombre;
         this.precio = precio;
-        this.cantidad = cantidad;
     }
 
-    venta(cantidad) {
-        if (cantidad > 0 && cantidad <= this.cantidad) {
-            this.cantidad -= cantidad;
-            console.log(`Has vendido ${cantidad} unidades de ${this.nombre}. Cantidad restante: ${this.cantidad}`);
-            return true;
-        } else {
-            console.log(`El producto ${this.nombre} está agotado o la cantidad ingresada no es válida.`);
-            return false;
-        }
+    mostrarEnInicio() {
+        const contenedorProductos = document.getElementById('contenedor-productos');
+
+        const divProducto = document.createElement('div');
+        divProducto.classList.add('producto');
+
+        const nombreProducto = document.createElement('h2');
+        nombreProducto.textContent = this.nombre;
+
+        const precioProducto = document.createElement('p');
+        precioProducto.textContent = `Precio: $${this.precio}`;
+
+        divProducto.appendChild(nombreProducto);
+        divProducto.appendChild(precioProducto);
+
+        contenedorProductos.appendChild(divProducto);
     }
 }
 
@@ -50,7 +73,7 @@ class Tienda {
     listaProductos() {
         console.log("Productos en la tienda:");
         this.productos.forEach((producto) => {
-            console.log(`ID: ${producto.id}, Nombre: ${producto.nombre}, Precio: $${producto.precio}, Cantidad: ${producto.cantidad}`);
+            console.log(`ID: ${producto.id}, Nombre: ${producto.nombre}, Precio: $${producto.precio}`);
         });
     }
 
@@ -63,21 +86,25 @@ class Tienda {
 const tienda = new Tienda();
 
 //Productos
-tienda.agregarProducto(new Producto(1, "Leche de limpieza", 2500, 50));
-tienda.agregarProducto(new Producto(2, "Gel de limpieza", 3000, 100));
-tienda.agregarProducto(new Producto(3, "Exfoliante", 4000, 50));
-tienda.agregarProducto(new Producto(4, "Tónico", 2000, 30));
+tienda.agregarProducto(new Producto(1, "Leche de limpieza", 8500));
+tienda.agregarProducto(new Producto(2, "Gel de limpieza", 8000));
+tienda.agregarProducto(new Producto(3, "Exfoliante", 9000));
+tienda.agregarProducto(new Producto(4, "Tónico", 7000));
+tienda.agregarProducto(new Producto(5, "Serum Vitamina C", 10000));
+tienda.agregarProducto(new Producto(6, "Crema Hidratante", 9000));
+tienda.agregarProducto(new Producto(7, "Scrub", 10000));
+tienda.agregarProducto(new Producto(8, "Set Antiojeras", 12000));
+tienda.agregarProducto(new Producto(9, "Serum con Hyaluronico", 12000));
+tienda.agregarProducto(new Producto(10, "Demaquillante", 6000));
 
-// Productos disponibles en la tienda
+//Productos disponibles en la tienda
 tienda.listaProductos();
 
-// Venta
-const productoVendido = tienda.buscarProducto("Leche de limpieza");
-if (productoVendido) {
-    productoVendido.venta(5);
-} else {
-    console.log("El producto no se encuentra en la tienda.");
-}
-
-// Lista productos actualizados
+//Lista productos actualizados
 tienda.listaProductos();
+
+document.addEventListener('DOMContentLoaded', () => {
+    tienda.productos.forEach(producto => {
+        producto.mostrarEnInicio();
+    });
+});

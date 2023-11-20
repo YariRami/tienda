@@ -5,6 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="estilos.css">
     <title>New Moon Skin</title>
+    <!--Bs inicia-->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    <!--Bs fin-->
 </head>
 <body>
     <div class="jumbotron container mt-3">
@@ -14,6 +17,15 @@
     <main>
         <h1>Cuidar tu piel es cuidar de ti mismo</h1>
         
+        <form id="formNombre">
+            <label for="nombre">Ingrese su nombre:</label>
+            <input type="text" id="nombre" required>
+            <span id="errorNombre">Debe ingresar un nombre.</span>
+            <button type="submit">Guardar</button>
+        </form>
+
+
+        <div class="productos" id="contenedor-productos"></div>
     </main>
 <script src="./main.js"></script>
 </body>

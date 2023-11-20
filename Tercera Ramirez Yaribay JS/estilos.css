@@ -8,7 +8,8 @@
     width: 100%;
     background-image: url(./multimedia/Logo.jpg);
     background-size: cover;
-    background-position: right;}
+    background-position: right;
+}
 
 h1{
     padding: 50px;
@@ -24,3 +25,26 @@ main{
     height: 400vh;
     background-position: center ;
 }
+
+.productos{
+    border: 2px solid palevioletred;
+    display: inline-block;
+    width: 200px;
+    border-radius: 8px;
+    border-radius: 15px;
+    box-shadow: 0 4px 35px rgba(0, 0, 0, 0.1);
+    margin: 100px;
+    backdrop-filter: blur(14.3px);
+    border: 1px solid rgba(255, 255, 255, 0.55);
+    padding: 10px;
+    text-align: center;
+    display: flex;
+    flex-wrap: wrap;
+    background: rgba(255, 255, 255, 0.28);
+    -webkit-backdrop-filter: blur(14.3px);
+    }
+#errorNombre{
+    color: red; 
+    display: none;
+}
+
