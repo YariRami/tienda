@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>New Moon Skin</title>
+        <!-- fontawesome inicia-->
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+        <!--fontawesome fin-->
+        <!--Bs inicia-->
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+        <!--Bs fin-->
+</head>
+<body>
+    <!--Navbar Inicia-->
+<nav class="navbar navbar-expand-sm navbar-dark fixed-top">
+    <div class="container-fluid">
+    <a class="navbar-brand" href="#"><img src="/multimedia/Logosimple.png" alt="tiara">
+        <span>Estética Artemiss</span></a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#collapsibleNavbar">
+        <i class="fa-solid fa-chart-bar fa-fade" style="color: #f7f7f8;"></i>
+        </button>
+        <div class="collapse navbar-collapse" id="collapsibleNavbar">
+        <ul class="navbar-nav" id="filter__lista">
+            <li class="nav-item">
+            <a class="nav-link" href="">Productos Faciales</a>
+            </li>
+            <li class="nav-item">
+            <a class="nav-link" href="">Productos Corporales</a>
+            </li>  
+            <li class="nav-item">
+                <a class="nav-link" href="">Todos</a>
+                </li>  
+        </ul>
+        </div>
+    </div>
+    <div id="userLogin" class="nav-item"></div>
+    <div id="btnCarrito">
+        <i class="fa-solid fa-cart-shopping"></i>
+        <p id="contador_carrito"></p>
+    </div>
+    
+    </nav>
+    <!--Navbar Fin-->
+    <main>
+    <h1>Cuidar tu piel es cuidar de ti mismo</h1>
+
+    <form id="user__login">
+<div>
+    <label for="user">Usuario:</label>
+    <input type="text" name="" id="user">
+</div>
+<div>
+    <label for="pass">Contraseña:</label>
+    <input type="password" name="" id="pass">
+</div>
+<button type="submit" id="btnLog">Ingresar</button>
+    </form>
+
+    <form id="user__register">
+        <div>
+            <label for="new__user">Usuario:</label>
+            <input type="text" name="" id="new__user">
+        </div>
+        <div>
+            <label for="new__pass">Contraseña:</label>
+            <input type="password" name="" id="new__pass">
+        </div>
+        <button type="submit" id="btnReg">Registrarse</button>
+            </form>
+    </main>
+    <script type="module" src="./js/usuario.js"></script>
+</body>
+</html>
