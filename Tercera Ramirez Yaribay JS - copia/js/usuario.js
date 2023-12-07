@@ -14,6 +14,11 @@ class newUser {
         this.admin = false
     }
 }
+
+document.addEventListener('DOMContentLoaded', () => {
+    const formLogin = document.getElementById('user__login');
+    const formRegistro = document.getElementById('user__register');
+
 btnLog.addEventListener("click", (e) => {
     e.preventDefault()
 
@@ -73,4 +78,4 @@ const validarYRegistrar = (nuevoUsuario) => {
     } else {
         alert(`El usuario ya existe`);
     }
-};
+};})

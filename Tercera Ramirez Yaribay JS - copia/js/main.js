@@ -5,19 +5,33 @@ const userLogin = document.getElementById("userLogin");
 const divProductos = document.getElementById("productos");
 const filtroInput = document.getElementById("filtro__input");
 const filterLista = document.getElementById("filter__lista");
+export let productosDisponibles = [];
 
-export let productosDisponibles = JSON.parse(localStorage.getItem("productos"));
+let listado = document.getElementById("listado");
+fetch("./js/productos.json")
+    .then((response) => response.json())
+    .then((data) => {
+        data.forEach((item) => {
+            const li = document.createElement("li");
+            li.classList.add('listado')
+            li.innerHTML = ` 
+            <div class="card" style="width: 18rem;">
+            <div class="card-body">
+            <p class="card-title">${item.nombre}</p>
+            <p class="card-text">Precio: <b>$${item.precio}</b></p>
+            <button id="comprar${item.id}" class="btn btn-primary">Comprar</button>
+            </div>
+            </div>
+            `;
+            listado.appendChild(li);
+                    const btnCompra = document.getElementById(`comprar${item.id}`);
+        btnCompra.addEventListener("click", () => comprarProducto(item.id));
 
-export const cargarProductos = () => {
-    return new Promise((resolve, reject) => {
-        const productos = JSON.parse(localStorage.getItem("productos"));
-        if (productos) {
-            resolve(productos);
-        } else {
-            reject(new Error("No se pudieron cargar los productos"));
-        }
+        });
+    })
+    .catch((error) => {
+        console.error('Error:', error);
     });
-};
 document.addEventListener("DOMContentLoaded", () => {
     cargarProductos()
         .then((productos) => {
@@ -63,30 +77,6 @@ document.addEventListener("DOMContentLoaded", () => {
     generarCardsProductos(productosDisponibles);
 });
 
-export const generarCardsProductos = (productos) => {
-    divProductos.innerHTML = "";
-
-    productos.forEach((producto) => {
-        const { nombre, precio, id, imagen } = producto;
-
-        let card = document.createElement("div");
-        card.className = "producto";
-        card.innerHTML = `
-            <div class="card" style="width: 18rem;">
-                <div class="card-body">
-                <img src="${imagen}" class="card-img-top" alt="${nombre}">
-                    <p class="card-title">${nombre}</p>
-                    <p class="card-text">Precio: <b>$${precio}</b></p>
-                    <button id="comprar${id}" class="btn btn-primary">Comprar</button>
-                </div>
-            </div>`;
-
-        divProductos.appendChild(card);
-
-        const btnCompra = document.getElementById(`comprar${id}`);
-        btnCompra.addEventListener("click", () => comprarProducto(id));
-    });
-};
 
 //Filtro por input 
 
@@ -140,3 +130,4 @@ filterLista.addEventListener("click" , (e) => {
                 console.error(error);
             });
     });
+    

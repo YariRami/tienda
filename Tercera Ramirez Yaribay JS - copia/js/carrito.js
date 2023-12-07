@@ -1,4 +1,4 @@
-import { producto } from "../db/productos.js"
+
 import { productosDisponibles } from "./main.js"
 
 JSON.parse(sessionStorage.getItem("carrito")) === null && sessionStorage.setItem("carrito", JSON.stringify([]))
@@ -70,7 +70,7 @@ const tablaCarrito = () => {
     carritoDeCompras.innerHTML= ''
     carrito.forEach(producto => {
         
-        const { imagen, nombre, cantidad, precio, id} = producto
+        const { nombre, cantidad, precio, id} = producto
 
         let body = document.createElement("tr")
 
