@@ -1,4 +1,4 @@
-import { producto } from "../db/productos.js";
+
 import { comprarProducto } from "./carrito.js";
 
 const userLogin = document.getElementById("userLogin");
@@ -8,14 +8,17 @@ const filterLista = document.getElementById("filter__lista");
 export let productosDisponibles = [];
 
 let listado = document.getElementById("listado");
+
 fetch("./js/productos.json")
     .then((response) => response.json())
     .then((data) => {
+        productosDisponibles = data; // Asignamos los productos obtenidos al array
         data.forEach((item) => {
             const li = document.createElement("li");
             li.classList.add('listado')
             li.innerHTML = ` 
             <div class="card" style="width: 18rem;">
+            <img src="${item.imagen}" class="card-img-top" alt="${item.nombre}">
             <div class="card-body">
             <p class="card-title">${item.nombre}</p>
             <p class="card-text">Precio: <b>$${item.precio}</b></p>
