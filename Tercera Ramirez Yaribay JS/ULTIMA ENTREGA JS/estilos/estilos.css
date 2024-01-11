@@ -1,0 +1,89 @@
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+span {
+    color: black;
+}
+
+.navbar {
+    background-color: pink;
+    height: 140px;
+    font-size: 22px;
+    padding: 20px;
+    text-align: center;
+    font-family: "Rubik" sans-serif;
+}
+.navbar img {
+    height: 40px;
+}
+.navbar ul {
+    list-style: none;
+}
+.navbar a {
+    text-decoration: none;
+    color: white;
+}
+.navbar a:hover {
+    color: black !important;
+}
+#buscarProducto{
+    margin-top: 40px;
+}
+#filter__input {
+display: block;
+margin: auto;
+width: 40%;
+}
+#btnCarrito {
+margin-left: 20px;
+margin-right: 20px;
+color: palevioletred;
+}
+#carrito{
+    display: none;
+    position: fixed;
+    top: 200px;
+    right: 10%;
+    width: 30%;
+    height: auto;
+    z-index: 1001;
+}
+.jumbotron {
+    height: 600px;
+    width: 100%;
+    background-image: url(/multimedia/Logo.jpg);
+    background-size: cover;
+    background-position: right;
+}
+
+h1{
+    padding: 50px;
+    font-family: 'Times New Roman', Times, serif, cursive;
+    text-align: center;
+    font-size: 50px;
+}
+
+main{
+    background-image: url(/multimedia/fondo.jpg);
+    background-size: cover;
+    width: 100%;
+    height: 400vh;
+    background-position: center ;
+}
+
+#buscarProducto{
+    text-align: center;
+}
+#filtro__input{
+    position: absolute;
+    top: 90%;
+    left: 60%;
+    transform: translate(-50%, -50%);
+}
+.listado {
+    font-size: 30px;
+    list-style: none;
+}
